@@ -38,6 +38,11 @@
                 <artifactId>panli-web-business</artifactId>
                 <version>${local.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.lxt</groupId>
+                <artifactId>view</artifactId>
+                <version>${local.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

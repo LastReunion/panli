@@ -14,10 +14,7 @@ public class TestController {
 
     @GetMapping("/test")
     public String test() {
-        String result = "你终于来了，等你好久啦，猪^(*￣(oo)￣)^\n" +
-                "虽然不知道今天发生了什么，但是还是不想看到你难过的样子额\n" +
-                "加油ヾ(◍°∇°◍)ﾉﾞ要振作丫\n" +
-                "晚安";
+        String result = "你就像是一只长满刺的猪，拒绝别人的靠近。。如果要厚脸皮往上贴，就只能扎的满身是伤啦。。还是很难过，虽然不知道自己到底在难过点什么";
         return result;
     }
 

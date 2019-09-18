@@ -1,4 +1,16 @@
 server:
-  port: 8080
-  servlet:
-    context-path: /pan
+  port: 80
+#  servlet:
+#    context-path: /pan
+
+#thymeleaf===================================================================
+#spring:
+#  thymeleaf:
+#    mode: HTML5
+#    prefix: classpath:/
+
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .html

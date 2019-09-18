@@ -21,6 +21,10 @@
             <groupId>com.lxt</groupId>
             <artifactId>panli-web-business</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.lxt</groupId>
+            <artifactId>view</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
