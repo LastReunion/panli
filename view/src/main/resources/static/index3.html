@@ -20,7 +20,7 @@
         }
 
         #container {
-            perspective: 1080px;
+            perspective: 800px;
         }
 
         #box {
@@ -40,17 +40,6 @@
             /* 设置图片的倒影 */
             -webkit-box-reflect: below 5px -webkit-linear-gradient(top, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%);
         }
-
-        #beian {
-            background-color:black;
-            color:white;
-            clear:both;
-            text-align:center;
-            padding:5px;
-            position: absolute;
-            bottom: 0;
-            left: 47%;
-        }
     </style>
 </head>
 <body>
@@ -69,9 +58,6 @@
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569433559123&di=7a06775a093ff7bc5dc060cb0db52323&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201810%2F04%2F20181004171057_mhvUW.thumb.700_0.png" alt="">
         <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1569433559123&di=7a06775a093ff7bc5dc060cb0db52323&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201810%2F04%2F20181004171057_mhvUW.thumb.700_0.png" alt="">
     </div>
-</div>
-<div id="beian">
-    <a href="http://www.beian.miit.gov.cn" target="_blank" class="text" style="color:white; text-decoration:none">浙ICP备19038261号</a>
 </div>
 <script>
     //每张图片围绕着Y轴转动等分角度，再沿Z轴平移一定距离
@@ -97,7 +83,6 @@
     //监听鼠标按下事件
     function bindEvent() {
         body.addEventListener('mousedown', mouseDown);
-        body.addEventListener('touchstart', touchStart);
     }
 
     //鼠标按下事件执行的方法
@@ -110,15 +95,6 @@
         lastY = e.clientY;
         body.addEventListener('mousemove', mouseMove);
         body.addEventListener('mouseup', mouseUp);
-    }
-    function touchStart(e) {
-        clearInterval(timer);
-        var e =e || window.event;
-        e.preventDefault();
-        lastX = e.touches[0].clientX;
-        lastY = e.touches[0].clientY;
-        body.addEventListener('touchmove', touchMove);
-        body.addEventListener('touchend', touchEnd);
     }
 
     //鼠标移动事件方法
@@ -135,37 +111,11 @@
         lastX = nowX;
         lastY = nowY;
     }
-    function touchMove(e) {
-        var e = e || window.event;
-        nowX = e.touches[0].clientX;
-        nowY = e.touches[0].clientY;
-        disX = nowX - lastX;
-        disY = nowY - lastY;
-        roX -= disY * 0.2;
-        roY += disX * 0.2;
-        box.style.cssText = `transform:rotateX(${roX}deg) rotateY(${roY}deg);cursor:move;`;
-        lastX = nowX;
-        lastY = nowY;
-    }
 
     //鼠标松开事件方法
     //鼠标送开后，设置转动角度逐渐减小的循环函数，在转动角度可以忽略不计是，停止循环
     function mouseUp() {
         body.removeEventListener('mousemove', mouseMove);
-        clearInterval(timer);
-        timer = setInterval(function () {
-            disX *= 0.98;
-            disY *= 0.98;
-            roX -= disY * 0.2;
-            roY += disX * 0.2;
-            box.style.cssText = `transform:rotateX(${roX}deg) rotateY(${roY}deg);cursor:pointer`;
-            if (Math.abs(disX) < 0.1 && Math.abs(disY) < 0.1) {
-                clearInterval(timer);
-            }
-        }, 20);
-    }
-    function touchEnd() {
-        body.removeEventListener('touchmove', touchMove);
         clearInterval(timer);
         timer = setInterval(function () {
             disX *= 0.98;
